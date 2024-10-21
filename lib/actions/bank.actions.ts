@@ -100,7 +100,7 @@ export const getAccount = async ({ appwriteItemId }: getAccountProps) => {
     const transactions = await getTransactions({
       accessToken: bank?.accessToken,
     });
-
+    console.log("transactions into get acccount", transactions);
     const account = {
       id: accountData.account_id,
       availableBalance: accountData.balances.available!,
@@ -156,6 +156,7 @@ export const getTransactions = async ({
   try {
     // Iterate through each page of new transaction updates for item
     while (hasMore) {
+      //not getting response
       const response = await plaidClient.transactionsSync({
         access_token: accessToken,
       });
